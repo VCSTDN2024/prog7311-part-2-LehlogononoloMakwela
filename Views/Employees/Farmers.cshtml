@@ -1,0 +1,45 @@
+﻿@model IEnumerable<AgriEnergyConnect_ST10290044_Part2.Models.FarmerProfile>
+
+
+       <!-- displaying all the farmers added -->
+<h2>All Farmers</h2>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Contact Number</th>
+            <th>Address</th>
+            <th>Assigned User</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var farmer in Model)
+            {
+                <tr>
+                    <td>@farmer.Name</td>
+                    <td>@farmer.ContactNumber</td>
+                    <td>@farmer.Address</td>
+                    <td>@(farmer.User != null ? farmer.User.UserName : "Not assigned")</td>
+                    <td>
+                        <form asp-action="DeleteFarmer" method="post" class="d-inline">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="id" value="@farmer.Id" />
+                            <button type="submit" class="btn btn-delete" onclick="return confirm('Are you sure you want to delete this farmer?');">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5" class="text-center">No farmers found.</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
