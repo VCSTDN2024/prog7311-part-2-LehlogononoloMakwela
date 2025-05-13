@@ -25,6 +25,7 @@ In Visual Studio:
 - Press F5 to run the app or click the play button
 - The app should launch in your default browser at:
 https://localhost:xxxx
+- login deatails for farmer: Farmer1@gmail.com password: Farmer@1234
 
 # github
 https://github.com/VCSTDN2024/prog7311-part-2-LehlogononoloMakwela.git
