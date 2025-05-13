@@ -1,0 +1,57 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Users> signInManager
+
+<ul class="navbar-nav ms-auto align-items-center">
+    @if (signInManager.IsSignedIn(User))
+    {
+        <!-- when farmer is signed in -->
+        if (User.IsInRole("Farmer"))
+        {
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="farmerDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    @User.Identity.Name
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="farmerDropdown">
+                    <li><a class="dropdown-item" asp-controller="Products" asp-action="Add">Add Product</a></li>
+                    <li><a class="dropdown-item" asp-controller="Products" asp-action="MyProducts">My Products</a></li>
+                    <li>
+                        <form asp-controller="Account" asp-action="Logout" method="post" class="dropdown-item p-0 m-0">
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-link w-100 text-start p-2">Logout</button>
+                        </form>
+                    </li>
+                </ul>
+            </li>
+        }
+        <!-- when employee is signed in-->
+        else if (User.IsInRole("Employee"))
+        {
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="employeeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    @User.Identity.Name
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="employeeDropdown">
+                    <li><a class="dropdown-item" asp-controller="Employees" asp-action="AddFarmer">Add New Farmer</a></li>
+                    <li><a class="dropdown-item" asp-controller="Employees" asp-action="Farmers">View All Farmers</a></li>
+                    <li><a class="dropdown-item" asp-controller="Employees" asp-action="AllProducts">View & Filter Products</a></li>
+                    <li>
+                        <form asp-controller="Account" asp-action="Logout" method="post" class="dropdown-item p-0 m-0">
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-link w-100 text-start p-2">Logout</button>
+                        </form>
+                    </li>
+                </ul>
+            </li>
+        }
+    }
+    else
+    {
+        <!-- Not signed in: show Login and Register with custom styles -->
+        <li class="nav-item">
+            <a class="nav-link bg-white-link" asp-controller="Account" asp-action="Login">Login</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link bg-green-link" asp-controller="Account" asp-action="Register">Register</a>
+        </li>
+    }
+</ul>

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "My Products";
+}
+
+<div>
+    <div class="account-box">
+        <h2 class="text-center mb-4">My Products</h2>
+        @if (!Model.Any())
+        {
+            <p>You have no products listed.</p>
+        }
+        else
+        {
+              <!-- header actions -->
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Production Date</th>
+                        <th>Actions</th> 
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var product in Model)
+                    {
+                        <tr>
+                            <td>@product.Name</td>
+                            <td>@product.Category</td>
+                            <td>@product.ProductionDate.ToShortDateString()</td>
+                            <td>
+                                <!-- Delete form -->
+                                <form asp-action="Delete" method="post" style="display:inline;">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="id" value="@product.Id" />
+                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this product?');">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        <a asp-action="Add" class="btn btn-success mt-3">Add New Product</a>
+    </div>
+</div>

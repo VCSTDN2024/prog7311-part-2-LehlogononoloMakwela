@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Farmer Dashboard";
+}
+
+<div class="container my-4">
+    <h1 class="text-center mb-4">Farmer Dashboard</h1>
+
+    <div class="text-center mb-4">
+        <h2>Welcome, @User.Identity.Name!</h2>
+        <p>Manage your products below.</p>
+    </div>
+
+    <div class="mb-4 text-center">
+        <a class="btn btn-primary btn-lg me-2" href="@Url.Action("Add", "Products")">Add New Product</a>
+        <a class="btn btn-secondary btn-lg" href="@Url.Action("MyProducts", "Products")">View My Products</a>
+    </div>
+</div>

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\AgriEnergyConnect_ST10290044_Part2.props" />
+</Project>
