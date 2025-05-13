@@ -1,0 +1,41 @@
+﻿@model AgriEnergyConnect_ST10290044_Part2.Models.FarmerProfile
+@{
+    ViewBag.Title = "Add New Farmer";
+    var users = ViewBag.Users as List<Users>;
+}
+
+ <!-- form for adding a farmer -->
+
+<h2>@ViewBag.Title</h2>
+<form asp-action="AddFarmer" method="post" class="form-horizontal">
+    @Html.AntiForgeryToken()
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label green-theme-label">Farmer Name</label>
+        <input asp-for="Name" class="form-control green-theme-input" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="ContactNumber" class="form-label green-theme-label">Contact Number</label>
+        <input asp-for="ContactNumber" class="form-control green-theme-input" />
+        <span asp-validation-for="ContactNumber" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Address" class="form-label green-theme-label">Address</label>
+        <input asp-for="Address" class="form-control green-theme-input" />
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="UserId" class="form-label green-theme-label">Assign User</label>
+        <select asp-for="UserId" class="form-select green-theme-input">
+            <option value="">Select User</option>
+            @foreach (var user in users)
+            {
+                <option value="@user.Id">@user.UserName</option>
+            }
+        </select>
+        <span asp-validation-for="UserId" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Farmer</button>
+</form>
+

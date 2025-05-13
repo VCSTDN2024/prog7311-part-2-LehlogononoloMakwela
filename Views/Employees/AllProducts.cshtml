@@ -1,0 +1,73 @@
+﻿@model AgriEnergyConnect_ST10290044_Part2.ViewModels.ProductFilterViewModel
+
+<h2>All Products from Farmers</h2>
+
+<form method="get" asp-action="AllProducts" class="row g-3 mb-4">
+    <!-- Farmer dropdown -->
+    <div class="col-md-3">
+        <label for="FarmerId" class="form-label">Farmer</label>
+        <select class="form-select" id="FarmerId" name="FarmerId">
+            <option value="">All Farmers</option>
+            @foreach (var farmer in Model.Farmers)
+            {
+                if (farmer.UserId == Model.FarmerId)
+                {
+                    <option value="@farmer.UserId" selected>@farmer.Name</option>
+                }
+                else
+                {
+                    <option value="@farmer.UserId">@farmer.Name</option>
+                }
+            }
+        </select>
+    </div>
+
+    <!-- Start Date -->
+    <div class="col-md-3">
+        <label for="StartDate" class="form-label">Start Date</label>
+        <input type="date" class="form-control" id="StartDate" name="StartDate" 
+               value="@(Model.StartDate?.ToString("yyyy-MM-dd") ?? "")" />
+    </div>
+
+    <!-- End Date -->
+    <div class="col-md-3">
+        <label for="EndDate" class="form-label">End Date</label>
+        <input type="date" class="form-control" id="EndDate" name="EndDate" 
+               value="@(Model.EndDate?.ToString("yyyy-MM-dd") ?? "")" />
+    </div>
+
+    <!-- Product Type -->
+    <div class="col-md-3">
+        <label for="ProductType" class="form-label">Product Type</label>
+        <input type="text" class="form-control" id="ProductType" name="ProductType" 
+               value="@Model.ProductType" />
+    </div>
+
+    <!-- Submit Button -->
+    <div class="col-12 mt-3">
+        <button class="btn btn-primary" type="submit">Filter</button>
+    </div>
+</form>
+
+<!-- Products Table -->
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Production Date</th>
+            <th>Farmer</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model.Products)
+        {
+            <tr>
+                <td>@p.Name</td>
+                <td>@p.Category</td>
+                <td>@p.ProductionDate.ToShortDateString()</td>
+                <td>@p.Farmer?.FullName ?? "Unknown"</td>
+            </tr>
+        }
+    </tbody>
+</table>

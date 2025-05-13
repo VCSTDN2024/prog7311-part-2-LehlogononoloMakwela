@@ -1,0 +1,128 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!-- Custom CSS for green theme -->
+<style>
+    <!-- green color -->
+    :root {
+        --primary-green: #28a745;
+        --dark-green: #1e7e34;
+        --light-green: #e9f7ef;
+        --secondary-color: #155724;
+        --text-color: #333;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--light-green);
+        color: var(--text-color);
+    }
+
+    h1, h2 {
+        color: var(--primary-green);
+    }
+
+    .section {
+        padding: 50px 20px;
+        background-color: white;
+        margin-bottom: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    <!-- buttons -->
+    .btn-custom {
+        background-color: var(--primary-green);
+        color: white;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.1em;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-custom:hover {
+            background-color: var(--dark-green);
+        }
+
+    <!-- image style -->
+    .feature-img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+	<!-- card features -->
+    .feature-card {
+        padding: 20px;
+        background-color: #f8fff8;
+        border-radius: 10px;
+        transition: box-shadow 0.3s;
+    }
+
+        .feature-card:hover {
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+</style>
+
+<div class="container my-5">
+
+    <!-- Welcome Banner -->
+    <div class="text-center mb-5">
+        <h1 class="display-4">Welcome to <span style="color: var(--primary-green); font-weight: bold;">Agri-Energy Connect</span></h1>
+        <p class="lead">Bridging sustainable agriculture and green energy in South Africa.</p>
+        <a href="#features" class="btn btn-custom mt-3">Explore Our Platform</a>
+    </div>
+
+    <!-- Key Features Overview -->
+    <div id="features" class="row g-4 mb-5">
+
+        <!-- Sustainable Farming Hub -->
+        <div class="col-md-4">
+            <div class="feature-card h-100">
+                <img src="/images/sustainableimg.jpg" alt="Sustainable Farming" class="feature-img mb-3" />
+                <h3>Sustainable Farming Hub</h3>
+                <p>Access best practices, share experiences, and collaborate on eco-friendly farming methods like organic techniques, water conservation, and soil health.</p>
+                <a href="/SustainableFarming/index" class="btn btn-sm btn-outline-success">Learn More</a>
+            </div>
+        </div>
+
+        <!-- Green Energy Marketplace -->
+        <div class="col-md-4">
+            <div class="feature-card h-100">
+                <img src="/images/marketplace.jpg" alt="Green Energy Marketplace" class="feature-img mb-3" />
+                <h3>Green Energy Marketplace</h3>
+                <p>Compare solar, wind, and biogas solutions tailored for farms. Connect with providers and review innovative technologies to power your agricultural operations sustainably.</p>
+                <a href="/Products/Marketplace" class="btn btn-sm btn-outline-success">Explore Marketplace</a>
+            </div>
+        </div>
+
+        <!-- Educational & Training Resources -->
+        <div class="col-md-4">
+            <div class="feature-card h-100">
+                <img src="/images/training.jpg" alt="Training & Education" class="feature-img mb-3" />
+                <h3>Educational & Training Resources</h3>
+                <p>Join webinars, access online courses, and learn how to implement renewable energy solutions on farms for a greener future.</p>
+                <a href="/Account/Register" class="btn btn-sm btn-outline-success">Get Started</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="text-center mb-5">
+        <h2 class="mb-4">Join the Green Revolution</h2>
+        <p>Be part of a community committed to sustainable farming and clean energy. Collaborate, innovate, and grow together.</p>
+        <a href="/Account/Register" class="btn btn-custom btn-lg mt-3">Join Now</a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center border-top pt-4 pb-2" style="background-color: #f0f9f0;">
+        <p class="mb-0">&copy; 2025 <strong>Agri-Energy Connect</strong>. All rights reserved.</p>
+        <p>
+            <a href="/Privacy" class="text-success">Privacy Policy</a> |
+            <a href="/Terms" class="text-success">Terms of Service</a>
+        </p>
+    </footer>
+</div>
